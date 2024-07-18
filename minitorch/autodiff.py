@@ -1,7 +1,7 @@
 from queue import Queue
 
 from dataclasses import dataclass
-from typing import Any, Iterable, List, Tuple
+from typing import Any, Iterable, List, Tuple, Dict
 
 from typing_extensions import Protocol
 
@@ -73,8 +73,8 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     root = variable
     # get in-edges
     in_egdes = dict()
-    filted_graph = dict()
-    vis_queue = Queue()
+    filted_graph: Dict[int, List[Variable]] = dict()
+    vis_queue: Queue[Variable] = Queue()
     visited = set()
     visited.add(root.unique_id)
     vis_queue.put(root)
